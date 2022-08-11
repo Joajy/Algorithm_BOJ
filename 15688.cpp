@@ -1,22 +1,16 @@
 #include<iostream>
-int ar[2000002];
+#include<algorithm>
+int ar[1000001];
 using namespace std;
 int main() {
     cin.tie(0); cout.tie(0);
     ios::sync_with_stdio(0);
-    int n, t, Max = 0;
+    int n;
     cin >> n;
-    for (n; n > 0; n--) {
-        cin >> t;
-        ar[t + 1000000]++;
-        Max = max(Max, t + 1000000);
-    }
-    for (int i = 0; i <= Max; i++) {
-        if (ar[i] != 0) {
-            while (ar[i]-- > 0) {
-                cout << i - 1000000 << '\n';
-            }
-        }
-    }
+    for (int i = 0; i < n; i++)
+        cin >> ar[i];
+    sort(ar, ar + n);
+    for (int i = 0; i < n; i++)
+        cout << ar[i] << '\n';
     return 0;
 }
