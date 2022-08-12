@@ -26,6 +26,7 @@ int main()
         }
     }
     sort(card, card + n);
+    //n is over 0, so don't mind about n - 1
     ll ans = card[n - 1].s;
     for (int i = n - 1; i > 0; i--) {
         if (card[i].f == card[i - 1].f) {
