@@ -2,8 +2,7 @@
 #include<utility>
 #include<algorithm>
 #define fast cin.tie(0), cout.tie(0), ios::sync_with_stdio(0);
-using namespace std
-;//name, book count
+using namespace std;//name, book count
 pair<string, int> x[1001]; 
 int main() {
     fast;
