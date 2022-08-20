@@ -6,9 +6,8 @@ using namespace std;
 string ans[20001];
 
 bool cmp(string a, string b) {
-	if (a.length() == b.length()) {
+	if (a.length() == b.length())
 		return a < b;
-	}
 	else
 		return a.length() < b.length();
 }
