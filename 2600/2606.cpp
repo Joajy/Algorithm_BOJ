@@ -11,11 +11,11 @@ int dy[4] = { 0,1,0,-1 };
 bool vis[102];
 vector<pair<int, int>> connect;
 
-//DFS ¹æ½ÄÀ» »ç¿ëÇÏ¿´½À´Ï´Ù.
+//DFS ë°©ì‹ì„ ì‚¬ìš©í•˜ì˜€ìŠµë‹ˆë‹¤.
 int main() {
 	int n, m;
 	cin >> n >> m;
-	//vector¿¡ ¿¬°áµÈ µÎ ³ëµå¸¦ Ç¥½ÃÇÕ´Ï´Ù(°£¼± ´ëÃ¼)
+	//vectorì— ì—°ê²°ëœ ë‘ ë…¸ë“œë¥¼ í‘œì‹œí•©ë‹ˆë‹¤(ê°„ì„  ëŒ€ì²´)
 	for (int i = 0; i < m; i++) {
 		int a, b;
 		cin >> a >> b;
@@ -25,7 +25,7 @@ int main() {
 	stack<int> s;
 	vis[1] = true;
 	s.push(1);
-	//Á¶°Ç¿¡ µû¶ó ÃÊ±â°ª 1À» ´ëÀÔÇÑ ÀÌÈÄ, 1Â÷¿ø »ó¿¡¼­ DFS¸¦ ½ÇÇàÇÏ¿© Á¶°Ç¿¡ ¸ÂÀ» °æ¿ì cnt++ ¹× stack¿¡ pushÇÕ´Ï´Ù.
+	//ì¡°ê±´ì— ë”°ë¼ ì´ˆê¸°ê°’ 1ì„ ëŒ€ìž…í•œ ì´í›„, 1ì°¨ì› ìƒì—ì„œ DFSë¥¼ ì‹¤í–‰í•˜ì—¬ ì¡°ê±´ì— ë§žì„ ê²½ìš° cnt++ ë° stackì— pushí•©ë‹ˆë‹¤.
 	while (!s.empty()) {
 		int cur = s.top(); s.pop();
 		for (int i = 0; i < connect.size(); i++) {
@@ -41,7 +41,7 @@ int main() {
 			}
 		}
 	}
-	//¿øÇÏ´Â °á°ú Ãâ·Â
+	//ì›í•˜ëŠ” ê²°ê³¼ ì¶œë ¥
 	cout << cnt;
 	return 0;
 }
