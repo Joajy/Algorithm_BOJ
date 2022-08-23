@@ -8,6 +8,7 @@ int main() {
 	fast;
 	int n, ans = 0, cnt = 0;
 	cin >> n;
+	//Sieve of Eratosthenes
 	for (int i = 2; i <= n; i++)
 		a[i] = i;
 	for (int i = 2; i <= n; i++) {
@@ -17,6 +18,7 @@ int main() {
 		for (int j = i * 2; j <= n; j += i)
 			a[j] = 0;
 	}
+	//Two Pointer
 	int st = 0, en = 0, sum = 0;
 	for (int st = 0; st < cnt; st++) {
 		while (en < cnt && sum < n)
