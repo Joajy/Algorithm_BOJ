@@ -7,7 +7,7 @@ using namespace std;
 using pi = pair<int, int>;
 int main() {
     fast;
-	priority_queue<pi, vector<pi>> q;
+	priority_queue<pi> q;
 	int n, x;
 	cin >> n;
 	for (int i = 0; i < n; i++) {
