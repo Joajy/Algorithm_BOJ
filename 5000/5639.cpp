@@ -7,8 +7,9 @@ struct Node {
 };
 
 void preorder(Node* node) {
-    if(node->left != nullptr) preorder(node->left);
-    if (node->right != nullptr) preorder(node->right);
+    if (node == nullptr) return;
+    preorder(node->left);
+    preorder(node->right);
     cout << node->data << '\n';
 }
 
