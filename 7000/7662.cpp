@@ -11,7 +11,7 @@ int main() {
     for (int i = 0; i < t; i++) {
         multiset<int> s;
         int k;
-        cin >> k; cin.get();
+        cin >> k;
         while (k--) {
             char cmd;
             int num;
