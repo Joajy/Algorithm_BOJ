@@ -13,25 +13,23 @@ int main() {
         int k;
         cin >> k; cin.get();
         while (k--) {
-            string cmd;
-            getline(cin, cmd);
-            if (cmd[0] == 'I')
-                s.insert(stoi(cmd.substr(2, cmd.length() - 2)));
-            else if (cmd == "D 1") {
-                if (!s.empty()) {
-                    auto it = s.find(*s.rbegin());
-                    s.erase(it);
-                }
-            }
-            else if (cmd == "D -1") {
-                if (!s.empty())
+            char cmd;
+            int num;
+            cin >> cmd >> num;
+            if (cmd == 'I')
+                s.insert(num);
+            else {
+                if (s.empty()) continue;
+                if (num == 1)
+                    s.erase(prev(s.end()));
+                else
                     s.erase(s.begin());
             }
         }
         if (s.empty())
             cout << "EMPTY\n";
         else
-            cout << *s.rbegin() << ' ' << *s.begin() << '\n';
+            cout << *prev(s.end()) << ' ' << *s.begin() << '\n';
     }
     return 0;
 }
