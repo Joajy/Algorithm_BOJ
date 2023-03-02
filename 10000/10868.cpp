@@ -8,7 +8,7 @@ int minTree[1 << 19];
 int n, m , a, b, c;
 
 int initMin(int idx, int st, int en) {
-	if (st == en) return minTree[idx] = arr[st]; // leaf
+	if (st == en) return minTree[idx] = arr[st];
 	int mid = (st + en) >> 1;
 	return minTree[idx] = min(initMin(idx << 1, st, mid), initMin((idx << 1) + 1, mid + 1, en));
 }
