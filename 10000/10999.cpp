@@ -8,16 +8,17 @@ ll arr[MAX], segTree[MAX << 2], lazy[MAX << 2];
 ll init(int node, int st, int en) {
 	if (st == en) return segTree[node] = arr[st];
 	int mid = (st + en) >> 1;
-	return segTree[node] = init(node << 1, st, mid) + init((node << 1) + 1, mid + 1, en);
+	return segTree[node] = init(node << 1, st, mid) + 
+				init((node << 1) + 1, mid + 1, en);
 }
 
 void lazyUpdate(int st, int en, int node) {
 	if (lazy[node] == 0) return;
-	segTree[node] += (en - st + 1) * lazy[node];
 	if (st != en) {
 		lazy[node << 1] += lazy[node];
 		lazy[(node << 1) + 1] += lazy[node];
 	}
+	segTree[node] += (en - st + 1) * lazy[node];
 	lazy[node] = 0;
 }
 
@@ -25,15 +26,15 @@ ll rangeUpdate(int st, int en, int left, int right, int node, ll val) {
 	lazyUpdate(st, en, node);
 	if (left > en || right < st) return segTree[node];
 	if (left <= st && en <= right) {
-		segTree[node] += (en - st + 1) * val;
 		if (st != en) {
 			lazy[node << 1] += val;
 			lazy[(node << 1) + 1] += val;
 		}
-		return segTree[node];
+		return segTree[node] += (en - st + 1) * val;
 	}
 	int mid = (st + en) >> 1;
-	return segTree[node] = rangeUpdate(st, mid, left, right, node << 1, val) + rangeUpdate(mid + 1, en, left, right, (node << 1) + 1, val);
+	return segTree[node] = rangeUpdate(st, mid, left, right, node << 1, val) +
+				rangeUpdate(mid + 1, en, left, right, (node << 1) + 1, val);
 }
 
 ll sum(int st, int en, int node, int left, int right) {
