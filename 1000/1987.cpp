@@ -1,43 +1,43 @@
 #include<iostream>
-#include<algorithm>
 using namespace std;
 
-int dx[4] = { 0, 1, 0, -1 };
-int dy[4] = { 1, 0, -1, 0 };
-int answer, t, r, c;
-string tour[21];
-int alp[26];
+string area[21];
+int dx[]{ 0,1,0,-1 };
+int dy[]{ 1,0,-1,0 };
+bool alp[26];
+int r, c, answer = 0;
+const char OFFSET = 'A';
 
-void dfs(int x, int y, int count) {
-    if (answer < count) 
-        answer = count;
-    for (int dir = 0; dir < 4; dir++) {
-        int nx = x + dx[dir];
-        int ny = y + dy[dir];
-        if (nx < 0 || nx >= r || ny < 0 || ny >= c) continue;
-        if (!alp[tour[nx][ny] - 'A']) {
-            alp[tour[nx][ny] - 'A'] = 1;
-            dfs(nx, ny, count + 1);
-            alp[tour[nx][ny] - 'A'] = 0;
-        }
-    }
+void dfs(int x, int y, int dist) {
+	if (answer < dist) answer = dist;
+	for (int dir = 0; dir < 4; dir++) {
+		int nx = x + dx[dir];
+		int ny = y + dy[dir];
+
+		if (nx < 0 || ny < 0 || nx >= r || ny >= c) continue;
+		int index = area[nx][ny] - OFFSET;
+		if (alp[index])continue;
+		alp[index] = 1;
+		dfs(nx, ny, dist + 1);
+		alp[index] = 0;
+	}
+
+}
+
+void input() {
+	cin >> r >> c;
+	for (int i = 0; i < r; ++i) cin >> area[i];
+}
+
+void solution() {
+	input();
+	alp[area[0][0] - OFFSET] = 1;
+	dfs(0, 0, 1);
+	cout << answer;
 }
 
 int main() {
-    cin.tie(0); cout.tie(0);
-    ios::sync_with_stdio(0);
-    cin >> t;
-    //each case starts at x = 1, y = 1 -> in program, (0,0)
-    for (int z = 1; z <= t; z++) {
-        cin >> r >> c;
-        //initialize at each case
-        answer = 0;
-        fill(alp, alp + 26, 0);
-        for (int i = 0; i < r; i++)
-            cin >> tour[i];
-        alp[tour[0][0] - 'A'] = 1;
-        dfs(0, 0, 1);
-        cout << '#' << z << ' ' << answer << '\n';
-    }
-    return 0;
+	cin.tie(0), cout.tie(0), ios_base::sync_with_stdio(0);
+	solution();
+	return 0;
 }
