@@ -39,10 +39,10 @@ int main() {
 		root = new Number();
 		for (int j = 0; j < n; j++) cin >> number[j];
 		sort(number, number + n);
-		for (int j = 0; j < n; j++) 
+		for (int j = 0; j < n; j++){ 
 			solution(number[j]);
-		if (check) cout << "YES\n";
-		else cout << "NO\n";
+		}
+		check == true ? cout << "YES\n" : cout << "NO\n";
 	}
 	return 0;
 }
