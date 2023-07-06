@@ -1,32 +1,31 @@
 #include<iostream>
 using namespace std;
 
-int n, answer = 0, x = 1;
+int n, answer = 0;
 
 void input() {
 	cin >> n;
 }
 
 void add(int num) {
-	answer |= (x << --num);
+	answer |= (1 << --num);
 }
 
 void remove(int num) {
-	if(answer & (x << (num - 1)))
-		answer ^= (x << --num);
+    answer &= ~(1 << --num);
 }
 
 int check(int num) {
-	if (answer & (x << --num)) return 1;
+	if (answer & (1 << --num)) return 1;
 	return 0;
 }
 
 void toggle(int num) {
-	answer ^= (x << --num);
+	answer ^= (1 << --num);
 }
 
 void all() {
-	answer = 0b11111'11111'11111'11111;
+	answer = (1 << 21) - 1;
 }
 
 void solution() {
