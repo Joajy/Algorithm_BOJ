@@ -8,7 +8,7 @@ void solution() {
 	for (int i = 0; i < s.length(); ++i) {
 		answer += s[i];
 		int aLen = answer.length();
-		if (aLen < len) continue;
+		if (aLen < len || answer.back() != bomb.back()) continue;
 		if (!bomb.compare(answer.substr(aLen - len, aLen))) {
 			answer.erase(aLen - len, aLen);
 		}
