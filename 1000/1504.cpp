@@ -3,7 +3,7 @@
 #include<queue>
 using namespace std;
 #define p pair<int, int>
-#define INF 2147483647
+#define INF 987654321
 
 int n, e, v1, v2;
 int dist[801];
@@ -56,7 +56,7 @@ int solution() {
 	int v2_n = dist[n];
 	int answer = min(INF, s_v1 + v1_v2 + v2_n);
 	answer = min(answer, s_v2 + v1_v2 + v1_n);
-	if (v1_v2 == INF || answer == INF || answer < 0) return -1;
+	if (v1_v2 == INF || answer == INF) return -1;
 	return answer;
 }
 
