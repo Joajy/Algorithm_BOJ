@@ -1,10 +1,9 @@
 #include<iostream>
 using namespace std;
-#define ll long long
 
-const int MAX = 1000001;
+const int MAX = 100001;
 int n, m, k;
-ll ar[MAX], seg[MAX << 2];
+int ar[MAX], seg[MAX << 2];
 
 int change(int x) {
 	if (x > 0) return 1;
@@ -12,20 +11,20 @@ int change(int x) {
 	return -1;
 }
 
-ll init(int st, int en, int node) {
+int init(int st, int en, int node) {
 	if (st == en) return seg[node] = ar[st];
 	int mid = (st + en) >> 1;
 	return seg[node] = init(st, mid, node << 1) * init(mid + 1, en, (node << 1) + 1);
 }
 
-ll update(int st, int en, int node, int idx, ll val) {
+int update(int st, int en, int node, int idx, int val) {
 	if (idx < st || idx > en) return seg[node];
 	if (st == en) return seg[node] = val;
 	int mid = (st + en) >> 1;
 	return seg[node] = update(st, mid, node << 1, idx, val) * update(mid + 1, en, (node << 1) + 1, idx, val);
 }
 
-ll mul(int st, int en, int left, int right, int node) {
+int mul(int st, int en, int left, int right, int node) {
 	if (left > en || right < st) return 1;
 	if (left <= st && en <= right) return seg[node];
 	int mid = (st + en) >> 1;
