@@ -1,10 +1,10 @@
 #include<iostream>
 using namespace std;
-#define MAX 1000001
+#define MAX 100001
 #define ll long long
 
-ll arr[1 << 20];
-ll tree[1 << 22];
+ll arr[MAX];
+ll tree[MAX << 2];
 int n, q, x, y, a, b;
 
 ll init(int idx, int st, int en) {
