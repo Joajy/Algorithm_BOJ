@@ -25,3 +25,47 @@ int main() {
 	solution();
 	return 0;
 }
+
+/*
+#include<cstdio>
+#include<stack>
+using namespace std;
+
+class P {
+public:
+	int height;
+	int index;
+	P(int a, int b) {
+		height = a;
+		index = b;
+	}
+
+	bool compare(int b) {
+		if (this->height <= b) {
+			return true;
+		}
+		return false;
+	}
+};
+
+int n, h;
+
+void solution() {
+	scanf("%d", &n);
+	stack<P> s;
+	s.push(P(1e9, 0));
+	for (int i = 1; i <= n; ++i) {
+		scanf("%d", &h);
+		while (s.top().compare(h)) {
+			s.pop();
+		}
+		printf("%d ", s.top().index);
+		s.push(P(h, i));
+	}
+}
+
+int main() {
+	solution();
+	return 0;
+}
+*/
